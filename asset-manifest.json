@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/codigos-penais-dpmcda/static/js/main.dc64a123.js",
+    "static/media/dpmcda.png": "/codigos-penais-dpmcda/static/media/dpmcda.495c15763f569adae721.png",
+    "static/media/cda.png": "/codigos-penais-dpmcda/static/media/cda.fe50ebc775d5415b2071.png",
+    "index.html": "/codigos-penais-dpmcda/index.html",
+    "main.dc64a123.js.map": "/codigos-penais-dpmcda/static/js/main.dc64a123.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.dc64a123.js"
+  ]
+}
