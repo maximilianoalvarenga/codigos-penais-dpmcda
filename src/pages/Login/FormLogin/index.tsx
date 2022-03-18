@@ -93,13 +93,14 @@ const FormLogin: React.FC = () => {
           </label>
       </div>
 
-      <input
+      <button
         id='btn-login'
         type="button"
-        value="Entrar"
         disabled={ disableBtn }
         onClick={ handleSubmit }
-      />
+      >
+        Entrar
+      </button>
     </Container>
   );
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoDpm from './assets/dpmcda.png';
+import logoDpm from 'assets/dpmcda.png';
 
 export const Container = styled.div`
   width: 100vw;

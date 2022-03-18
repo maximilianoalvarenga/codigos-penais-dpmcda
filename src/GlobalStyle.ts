@@ -16,4 +16,23 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased !important;
   }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: orange;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
+  border: 3px solid orange;
+}
 `

@@ -1,10 +1,16 @@
+import Header from '../../components/Header';
 import React from 'react';
-
-// import { Container } from './styles';
+import { Container, Main } from './style';
+import TableCodes from 'components/TableCodes';
 
 const Home: React.FC = () => {
   return (
-    <h1>Olá Mundo!!</h1>
+    <Container>
+      <Header />
+      <Main>
+        <TableCodes />
+      </Main>
+    </Container>
   );
 }
 

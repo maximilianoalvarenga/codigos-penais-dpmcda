@@ -1,11 +1,5 @@
 import * as teste from './Api';
 
-interface User {
-  id: Number;
-  name: string;
-  password: string;
-}
-
 interface Credentials {
   user: string;
   password: string;
