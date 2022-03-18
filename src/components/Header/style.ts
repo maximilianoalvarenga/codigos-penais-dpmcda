@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logoDpm from 'assets/dpmcda.png';
-import logoCda from 'assets/cda2.jpg';
+import logoCda from 'assets/cda.png';
 
 export const Container = styled.div`
   width: 100vw;
@@ -36,8 +36,8 @@ export const Container = styled.div`
   }
 
   .cda {
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     background-image: url(${logoCda});
   }
 
