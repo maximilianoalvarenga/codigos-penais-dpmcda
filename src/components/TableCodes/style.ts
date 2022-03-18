@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: black;
-  margin-top: 50px;
+  margin-top: 10px;
 
   table {
     background-color: white;
