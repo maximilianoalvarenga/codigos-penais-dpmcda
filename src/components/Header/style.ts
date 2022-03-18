@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logoDpm from 'assets/dpmcda.png';
-import logoCda from 'assets/cda2.jpg';
+import logoCda from 'assets/cda.png';
 
 export const Container = styled.div`
   width: 100vw;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border: 1.5px solid #FFD700;
+  border: 1.5px solid #FFCC01;
   border-style: none none solid none;
 
   .logo-header {
@@ -32,12 +32,12 @@ export const Container = styled.div`
     font-weight: bold;
     width: 50%;
     height: 90%;
-    color: #FFD700;
+    color: #FFCC01;
   }
 
   .cda {
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     background-image: url(${logoCda});
   }
 

@@ -14,12 +14,13 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-size: 1.6rem;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased !important;
   }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: blue orange;
+  scrollbar-color: blue #FFCC01;
 }
 
 *::-webkit-scrollbar {
@@ -27,12 +28,12 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 *::-webkit-scrollbar-track {
-  background: orange;
+  background: #FFCC01;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: black;
   border-radius: 20px;
-  border: 3px solid orange;
+  border: 3px solid #FFCC01;
 }
 `
