@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border: 1.5px solid #FFD700;
+  border: 1.5px solid #FFCC01;
   border-style: none none solid none;
 
   .logo-header {
@@ -32,7 +32,7 @@ export const Container = styled.div`
     font-weight: bold;
     width: 50%;
     height: 90%;
-    color: #FFD700;
+    color: #FFCC01;
   }
 
   .cda {
