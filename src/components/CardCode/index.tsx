@@ -45,15 +45,15 @@ const CardCode: React.FC = ({penalCode}: any) => {
     <Container>
       <label>
         <span>Nome:</span>
-        <input type="text" name="name" id="name" />
+        <input type="text" name="name" id="name" placeholder='Nome'/>
       </label>
       <label className=' numbers'>
         <span>Multa:</span>
-        <input type="text" name="fine" id="fine" />
+        <input type="text" name="fine" id="fine" placeholder='Multa'/>
       </label>
       <label className='numbers'>
         <span>Tempo de Prisão:</span>
-        <input type="text" name="time" id="time" />
+        <input type="text" name="time" id="time" placeholder='Tempo de Prisão'/>
       </label>
       <label className='select-input'>
         <span>Status:</span>
@@ -62,8 +62,8 @@ const CardCode: React.FC = ({penalCode}: any) => {
           <option value="inactive">Inativo</option>
         </select>
       </label>
-      <textarea>
-        Descrição
+      <textarea placeholder='Descrição do Código Penal'>
+
       </textarea>
   </Container>
   );

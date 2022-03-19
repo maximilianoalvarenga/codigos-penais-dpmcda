@@ -19,17 +19,18 @@ export const Container = styled.div`
       height: 40%;
       font-size: 2rem;
       font-weight: bold;
-      color: #FFCC01;
+      color: black;
     }
   }
 
   input,
   textarea,
   select {
+    border: 3px solid black;
     border-style: none none solid none;
-    border-color: #FFCC01;
-    background-color: #151091;
-    color: white;
+    border-color: black;
+    background-color: #D6D6D6;
+    color: black;
     font-size: 1.8rem;
     font-weight: bold;
     padding-left: 5px;
@@ -66,7 +67,7 @@ export const Container = styled.div`
     padding: 10px 20px;
     height: 40%;
     width: 95%;
-    border-bottom: 2px solid #FFCC01;
+    border-bottom: 3px solid black;
   }
 `;
 

@@ -18,7 +18,7 @@ const FormCreate: React.FC = () => {
           <CardCode />
         </div>
         <div className='buttons'>
-          <button type='button'>Criar</button>
+          <button type='button' className='sucess'>Criar</button>
         </div>
       </div>
     </Container>

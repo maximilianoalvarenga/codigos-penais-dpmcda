@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #202020;
+  background-color: rgba(192,192,192, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,14 +25,15 @@ export const Main = styled.div`
   .new-content {
     width: 80%;
     height: 95%;
-    background-color: #333533;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     border-radius: 10px;
     position: relative;
+
     .teste {
       width: 50px;
       height: 20px;
@@ -57,7 +58,7 @@ export const Main = styled.div`
       height: 10%;
       font-size: 3rem;
       font-weight: bold;
-      color: white;
+      color: black;
     }
 
     .content {

@@ -34,7 +34,6 @@ export const Container = styled.div`
 
   tr:hover {
     background-color: #FFEE32;
-
     color: #4B45DE;
   }
 

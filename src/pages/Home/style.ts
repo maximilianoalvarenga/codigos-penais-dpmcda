@@ -19,7 +19,7 @@ export const NewAdd = styled(Add)`
 
   width: 100%;
   height: 100%;
-  color: #FFCC01;
+  color: #202020;
 `;
 
 export const Main = styled.main`
@@ -76,9 +76,10 @@ export const AddCode = styled.div`
     }
   }
 
-  color: #FFCC01;
+  color: #202020;
   transition: all 0.5s;
-  background-color: #4B45DE;
+
+  background-color: #FFD100;
   width: 36px;
   height: 35px;
   position: absolute;
