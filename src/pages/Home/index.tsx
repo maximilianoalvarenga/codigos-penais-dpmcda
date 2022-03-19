@@ -1,7 +1,7 @@
 import Header from '../../components/Header';
 import React, { useState } from 'react';
 import { AddCode, Container, Main, NewAdd } from './style';
-import TableCodes from 'components/TableCodes';
+import TableCodes from 'pages/Home/TableCodes';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {

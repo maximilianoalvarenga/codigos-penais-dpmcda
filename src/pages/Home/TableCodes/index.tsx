@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container } from './style';
-
+import { useNavigate } from 'react-router-dom';
 
 const TableCodes: React.FC = ({penalCode}: any) => {
+  const navigate = useNavigate();
   const convertToData = (param: string) => {
     const convertion = new Date(param)
       .toISOString()
@@ -13,6 +14,10 @@ const TableCodes: React.FC = ({penalCode}: any) => {
 
       const newData = new Date(convertion).toLocaleDateString('pt-br')
     return newData;
+  }
+
+  const redirectToDetails = (param: number): void => {
+    navigate(`/details/${param}`);
   }
 
   return (
@@ -35,7 +40,7 @@ const TableCodes: React.FC = ({penalCode}: any) => {
                 status: number
                 dataCriacao: string
               }) => (
-                <tr key={ code.id} className='code-information'>
+                <tr key={ code.id} className='code-information' onClick={() => redirectToDetails(code.id)}>
                   <td>{code.nome}</td>
                   <td>{convertToData(code.dataCriacao)}</td>
                   <td>{`$ ${code.multa}`}</td>

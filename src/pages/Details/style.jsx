@@ -1,31 +1,36 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 80%;
-  height:95%;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+
+`;
+
+export const Main = styled.div`
+  width: 100%;
+  height: 100%;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 0px 15px rgba(255, 204, 1, 0.7);
-  border-radius: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 
   .new-content {
-    width: 90%;
-    height: 100%;
+    width: 70%;
+    height: 95%;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 15px rgba(255, 204, 1, 0.7);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-
-    .teste {
-      width: 50px;
-      height: 20px;
-      background-color: green;
-      position: absolute;
-      top: 2%;
-      left: 2%;
-      cursor: pointer;
-    }
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
 
     .title,
     .content,
@@ -33,6 +38,7 @@ export const Container = styled.div`
       width: 90%;
       display: flex;
     }
+
 
     .title {
       justify-content: center;
@@ -59,15 +65,6 @@ export const Container = styled.div`
         width: 150px;
         height: 80%;
         border-radius: 15px;
-      }
-    }
-  }
-
-
-  @media screen and (max-width: 767px)  {
-    form {
-      .numbers {
-        width: 45%;
       }
     }
   }
