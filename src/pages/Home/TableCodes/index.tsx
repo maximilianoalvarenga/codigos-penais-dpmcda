@@ -1,9 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Container } from './style';
 import { useNavigate } from 'react-router-dom';
 
-const TableCodes: React.FC = ({penalCode}: any) => {
+const TableCodes: React.FC = () => {
+  const { codigopenal } = useSelector((state: any)=> state.codigopenal);
   const navigate = useNavigate();
   const convertToData = (param: string) => {
     const convertion = new Date(param)
@@ -33,7 +34,7 @@ const TableCodes: React.FC = ({penalCode}: any) => {
           </thead>
           <tbody>
             {
-              penalCode.map((code: {
+              codigopenal.map((code: {
                 id: number
                 nome: string
                 multa: string
@@ -54,6 +55,4 @@ const TableCodes: React.FC = ({penalCode}: any) => {
   );
 }
 
-export default connect( state => ({
-  penalCode: state
-}))(TableCodes);
+export default TableCodes;

@@ -1,24 +1,16 @@
 import CardCode from 'components/CardCode';
 import Header from 'components/Header';
 import React from 'react';
-import { Container, Main } from './style';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Details: React.FC = () => {
-  const { id }= useParams();
+import { Container, Main } from './style';
+
+const Edit: React.FC = () => {
   const navigate = useNavigate();
 
   const returnHome = () => {
     navigate('/home');
   }
-  const goToEdit = () => {
-    navigate(`/edit/${id}`);
-  }
-
-  const excludeCode = () => {
-    console.log('Excluir')
-  }
-
   return (
     <Container>
       <Header />
@@ -33,16 +25,8 @@ const Details: React.FC = () => {
             <button
               type='button'
               className='attention'
-              onClick={goToEdit}
             >
-              Alterar
-            </button>
-            <button
-              type='button'
-              className='warning'
-              onClick={excludeCode}
-            >
-              Excluir
+              Salvar
             </button>
           </div>
         </div>
@@ -51,4 +35,4 @@ const Details: React.FC = () => {
   );
 }
 
-export default Details;
+export default Edit;

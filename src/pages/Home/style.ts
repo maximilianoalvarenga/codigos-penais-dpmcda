@@ -50,7 +50,7 @@ export const Main = styled.main`
   #search-code {
     width: 81%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: relative;
 
     input {
@@ -67,7 +67,6 @@ export const AddCode = styled.div`
   &[data-teste="true"] {
     width: 100px;
     height: 36px;
-    right: 2%;
 
     span {
       font-size: 2rem;
@@ -77,14 +76,13 @@ export const AddCode = styled.div`
   }
 
   color: #202020;
-  transition: all 0.5s;
+  transition: all 0.7s;
 
   background-color: #FFD100;
   width: 36px;
   height: 35px;
   position: absolute;
-  bottom: 5%;
-  right: 7%;
+  left: 0.2%;
   border-radius: 10px;
   display: flex;
   justify-content: center;

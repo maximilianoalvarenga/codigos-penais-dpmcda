@@ -1,74 +1,205 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams, useLocation } from 'react-router-dom';
 import { Container } from './style';
 
-const CardCode: React.FC = ({penalCode}: any) => {
+export interface Code {
+  id: number
+  nome: string
+  descricao: string
+  multa: number | string
+  tempoPrisao: number | string
+  status: number
+}
+
+const CardCode: React.FC = () => {
+  const { codigopenal } = useSelector((state: any)=> state.codigopenal);
   const { id }= useParams();
-  console.log(id);
+  const location = useLocation().pathname;
+
+  const [ codeInformation, setCodeInformation] = useState<Code>({
+    id: 0,
+    nome: '',
+    descricao: '',
+    multa: '',
+    tempoPrisao: '',
+    status: 1,
+  });
+  const [ codeInformationAux, setCodeInformationAux] = useState('')
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const changeDisabled = useCallback((): void => {
+    setIsDisabled(false);
+  },[])
+
+  const defineCode = useCallback(():void => {
+    let code: any = {};
+
+    for (const iterator of codigopenal) {
+      if (iterator.id.toString() === id) {
+        code = {
+          id: iterator.id,
+          nome: iterator.nome,
+          descricao: iterator.descricao,
+          multa: iterator.multa,
+          tempoPrisao: iterator.tempoPrisao,
+          status: iterator.status,
+        }
+      }
+    }
+    setCodeInformation(code);
+    setCodeInformationAux(code);
+  },[id, codigopenal])
+
+  const handleChange = (event: any) => {
+    const { name, value} = event.target;
+
+    setCodeInformation((old) => ({
+      ...old, [name]: value
+    }));
+  }
+
+  useEffect(() => {
+    if(location.includes('details')){
+      changeDisabled();
+      defineCode()
+    }
+    if (location.includes('edit')) {
+      defineCode()
+    }
+  },[changeDisabled, location, defineCode]);
 
   return id !== undefined ? (
-    penalCode.map((code: {
-      id: number
-      nome: string
-      descricao: string
-      multa: number
-      tempoPrisao: number
-      status: number
-    }) => code.id.toString() === id && (
-      <Container>
-          <label>
-            <span>Nome:</span>
-            <input type="text" name="name" id="name" value={code.nome} disabled/>
+    <Container>
+      <label>
+        <span>Nome:</span>
+        <input
+          type="text"
+          name="nome"
+          id="name"
+          value={codeInformation.nome}
+          disabled={!isDisabled}
+          onChange={handleChange}
+        >
+        </input>
+      </label>
+      <label className=' numbers'>
+        <span>Multa:</span>
+        <input
+          type="text"
+          name="multa"
+          id="fine"
+          value={!isDisabled ? `R$ ${codeInformation.multa}` : codeInformation.multa}
+          disabled={!isDisabled}
+          onChange={handleChange}
+        />
+      </label>
+      <label className='numbers'>
+        <span>Tempo de Prisão:</span>
+          <input
+            type="text"
+            name="tempoPrisao"
+            id="time"
+            value={!isDisabled ? `${codeInformation.tempoPrisao} meses` : codeInformation.tempoPrisao}
+            disabled={!isDisabled}
+            onChange={handleChange}
+          />
+      </label>
+      <label className='select-input'>
+        <span>Status:</span>
+          {
+            !isDisabled ? (
+              <select disabled={!isDisabled} defaultValue={codeInformation.status}>
+                <option
+                  value={codeInformation.status}>{codeInformation.status === 1 ? 'Ativo' : 'Inativo'}
+                </option>
+              </select>
+            ) : (
+              <select
+                name='status'
+                disabled={!isDisabled}
+                defaultValue={codeInformation.status}
+                onChange={handleChange}
+              >
+                <option
+                  value="1"
+                >
+                  Ativo
+                </option>
+                <option
+                  value="2"
+                >
+                  Inativo
+                </option>
+              </select>
+            )
+          }
           </label>
-          <label className=' numbers'>
-            <span>Multa:</span>
-            <input type="text" name="fine" id="fine" value={`$ ${code.multa}`} disabled/>
-          </label>
-          <label className='numbers'>
-            <span>Tempo de Prisão:</span>
-            <input type="text" name="time" id="time" value={`${code.tempoPrisao} meses`} disabled/>
-          </label>
-          <label className='select-input'>
-            <span>Status:</span>
-            <select disabled>
-              <option selected value={code.status}>{code.status === 1 ? 'Ativo' : 'Inativo'}</option>
-              <option value="inactive">Inativo</option>
-            </select>
-          </label>
-          <textarea disabled>
-            {code.descricao}
+          <textarea
+            name='descricao'
+            disabled={!isDisabled}
+            value={codeInformation.descricao}
+            onChange={handleChange}
+          >
+            {codeInformation.descricao}
           </textarea>
       </Container>
-    ))
   ) : (
     <Container>
       <label>
         <span>Nome:</span>
-        <input type="text" name="name" id="name" placeholder='Nome'/>
+        <input
+          type="text"
+          name="nome"
+          id="name"
+          placeholder='Nome'
+          value={codeInformation.nome}
+          onChange={handleChange}
+        />
       </label>
       <label className=' numbers'>
         <span>Multa:</span>
-        <input type="text" name="fine" id="fine" placeholder='Multa'/>
+        <input
+          type="text"
+          name="multa"
+          id="fine"
+          placeholder='Multa'
+          value={codeInformation.multa}
+          onChange={handleChange}
+        />
       </label>
       <label className='numbers'>
         <span>Tempo de Prisão:</span>
-        <input type="text" name="time" id="time" placeholder='Tempo de Prisão'/>
+        <input
+          type="text"
+          name="tempoPrisao"
+          id="time"
+          placeholder='Tempo de Prisão'
+          value={codeInformation.tempoPrisao }
+          onChange={handleChange}
+        />
       </label>
       <label className='select-input'>
         <span>Status:</span>
-        <select>
-          <option selected value="active">Ativo</option>
-          <option value="inactive">Inativo</option>
+        <select
+          name='status'
+          value={codeInformation.status.toString()}
+          onChange={handleChange}
+        >
+          <option value="1">Ativo</option>
+          <option value="2">Inativo</option>
         </select>
       </label>
-      <textarea placeholder='Descrição do Código Penal'>
-
+      <textarea
+        name='descricao'
+        placeholder='Descrição do Código Penal'
+        value={codeInformation.descricao}
+        onChange={handleChange}
+      >
+        {codeInformation.descricao}
       </textarea>
   </Container>
   );
 }
 
-export default connect( state => ({
-  penalCode: state
-}))(CardCode);
+export default CardCode;
