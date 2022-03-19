@@ -5,7 +5,7 @@ import logoCda from 'assets/cda.png';
 export const Container = styled.div`
   width: 100vw;
   height: 110px;
-  background-color: black;
+  background-color: #202020;
   display: flex;
   align-items: center;
   justify-content: space-around;

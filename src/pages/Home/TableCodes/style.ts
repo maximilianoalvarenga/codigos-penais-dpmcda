@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
+  background-color: transparent;
   margin-top: 10px;
 
   table {
@@ -23,7 +23,7 @@ export const Container = styled.div`
   }
 
   tr {
-    background-color:  #FFCC01;
+    background-color:  white;
     font-weight: bold;
     color: black;
     height: 50px;
@@ -33,8 +33,9 @@ export const Container = styled.div`
   }
 
   tr:hover {
-    background-color: #4B45DE;
-    color: #FFCC01;
+    background-color: #FFEE32;
+
+    color: #4B45DE;
   }
 
   td {
@@ -45,8 +46,8 @@ export const Container = styled.div`
   }
 
   th {
-    background-color: #151091;
-    color: white;
+    background-color: #D6D6D6;
+    color: black;
     padding-left: 5px;
   }
 `;

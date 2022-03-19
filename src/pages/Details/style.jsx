@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background-color: #202020;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,17 +20,28 @@ export const Main = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  position: relative;
 
   .new-content {
-    width: 70%;
+    width: 80%;
     height: 95%;
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0px 0px 15px rgba(255, 204, 1, 0.7);
+    background-color: #333533;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     border-radius: 10px;
+    position: relative;
+    .teste {
+      width: 50px;
+      height: 20px;
+      background-color: green;
+      position: absolute;
+      top: 2%;
+      left: 2%;
+      cursor: pointer;
+    }
 
     .title,
     .content,
@@ -65,7 +76,18 @@ export const Main = styled.div`
         width: 150px;
         height: 80%;
         border-radius: 15px;
+        border-style: none;
       }
     }
+  }
+  .warning {
+    background-color: red;
+  }
+
+  .warning:hover {
+    background-color: #FF0000;
+  }
+  .attention {
+    background-color: yellow;
   }
 `;
