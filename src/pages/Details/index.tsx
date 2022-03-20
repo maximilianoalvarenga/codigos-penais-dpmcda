@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as API from 'services/Api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPenalCodes } from 'slices/penalCodes';
+import Return from 'components/Return';
 
 const Details: React.FC = () => {
   const { codigopenal } = useSelector((state: any)=> state.codigopenal);
@@ -14,9 +15,6 @@ const Details: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const returnHome = () => {
-    navigate('/home');
-  }
   const goToEdit = () => {
     navigate(`/edit/${id}`);
   }
@@ -56,8 +54,7 @@ const Details: React.FC = () => {
 
   const returnDetails = useCallback(() => {
     setZIndex('0');
-    navigate(`/details/${id}`);
-  },[id, navigate]);
+  },[]);
 
   const excludeCode = () => {
     setZIndex('1');
@@ -78,7 +75,7 @@ const Details: React.FC = () => {
       <Header />
       <Main>
         <div className='new-content'>
-          <div className='teste' onClick={returnHome}>Voltar</div>
+          <Return />
           <span className='title'>Detalhes Código Penal</span>
           <div className='content'>
             <CardCode />

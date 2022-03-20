@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ButtonCreate, Container } from './style';
 import * as utils from 'services/Auth';
 import { setPenalCodes } from 'slices/penalCodes';
+import Return from 'components/Return';
 
 const FormCreate: React.FC = () => {
   const {novoCodigoPenal, codigopenal} = useSelector((state: any)=> state.codigopenal);
@@ -47,7 +48,7 @@ const FormCreate: React.FC = () => {
   return (
     <Container>
       <div className='new-content'>
-        <div className='teste' onClick={returnHome}>Voltar</div>
+        <Return />
         <div className='title'>Novo Código Penal</div>
         <div className='content'>
           <CardCode />

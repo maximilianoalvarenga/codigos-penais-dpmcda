@@ -1,5 +1,6 @@
 import CardCode from 'components/CardCode';
 import Header from 'components/Header';
+import Return from 'components/Return';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -47,7 +48,6 @@ const Edit: React.FC = () => {
 
     // Remover em Prod, pois será atualizado o store quando aplicado o update
       const aux = {...putCode, id: parseInt(id!)};
-      console.log(putCode)
       let temp: any = []
       for (let iterator of codigopenal) {
         if(iterator.id === parseInt(aux.id)) {
@@ -79,7 +79,7 @@ const Edit: React.FC = () => {
       <Header />
       <Main>
         <div className='new-content'>
-          <div className='teste' onClick={returnHome}>Voltar</div>
+          <Return />
           <span className='title'>Detalhes Código Penal</span>
           <div className='content'>
             <CardCode />

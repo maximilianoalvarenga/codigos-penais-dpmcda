@@ -85,8 +85,6 @@ const CardCode: React.FC = () => {
     }
   },[changeDisabled, location, defineCode]);
 
-  console.log(codeInformation.status.toString());
-
   return id !== undefined ? (
     <Container>
       <label>

@@ -45,7 +45,6 @@ export const postCode = async(param: any, id: any) => {
 
 export const updateCode = async(code: Code) => {
   const response = await API.putPenalCode(code);
-  console.log(response);
   return response;
 }
 
