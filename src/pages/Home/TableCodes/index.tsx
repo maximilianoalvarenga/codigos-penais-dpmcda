@@ -44,7 +44,7 @@ const TableCodes: React.FC = () => {
                 <tr key={ code.id} className='code-information' onClick={() => redirectToDetails(code.id)}>
                   <td>{code.nome}</td>
                   <td>{convertToData(code.dataCriacao)}</td>
-                  <td>{`$ ${code.multa}`}</td>
+                  <td>{`R$ ${code.multa.toString().replace('.',',')}`}</td>
                   <td>{code.status === 1 ? 'Ativo' : 'Inativo'}</td>
                 </tr>
               ))

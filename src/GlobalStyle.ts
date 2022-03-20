@@ -18,22 +18,35 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased !important;
   }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: blue #FFCC01;
-}
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: blue #FFCC01;
+  }
 
-*::-webkit-scrollbar {
-  width: 12px;
-}
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
 
-*::-webkit-scrollbar-track {
-  background: #FFCC01;
-}
+  *::-webkit-scrollbar-track {
+    background: #FFCC01;
+  }
 
-*::-webkit-scrollbar-thumb {
-  background-color: black;
-  border-radius: 20px;
-  border: 3px solid #FFCC01;
-}
+  *::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 20px;
+    border: 3px solid #FFCC01;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  .sucess {
+    background-color: green;
+  }
 `

@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 import { Container } from './style';
+import { setNewPenalCode } from 'slices/penalCodes';
+import { useDispatch } from 'react-redux';
 
 export interface Code {
   id: number
@@ -16,6 +18,7 @@ const CardCode: React.FC = () => {
   const { codigopenal } = useSelector((state: any)=> state.codigopenal);
   const { id }= useParams();
   const location = useLocation().pathname;
+  const dispatch = useDispatch();
 
   const [ codeInformation, setCodeInformation] = useState<Code>({
     id: 0,
@@ -25,7 +28,6 @@ const CardCode: React.FC = () => {
     tempoPrisao: '',
     status: 1,
   });
-  const [ codeInformationAux, setCodeInformationAux] = useState('')
   const [isDisabled, setIsDisabled] = useState(true);
 
   const changeDisabled = useCallback((): void => {
@@ -48,16 +50,31 @@ const CardCode: React.FC = () => {
       }
     }
     setCodeInformation(code);
-    setCodeInformationAux(code);
   },[id, codigopenal])
 
   const handleChange = (event: any) => {
-    const { name, value} = event.target;
+    let { name, value} = event.target;
+
+    if(name === 'tempoPrisao'){
+      value = value.replace(/[^\d]/g, '');
+    }
+
+    if(name === 'multa'){
+      value = value.replace(/[^.\d]/g,'');
+    }
+
+    if(name === 'status'){
+      value = parseInt(value);
+    }
 
     setCodeInformation((old) => ({
       ...old, [name]: value
     }));
   }
+
+  useEffect(() => {
+    dispatch(setNewPenalCode(codeInformation))
+  },[codeInformation, dispatch])
 
   useEffect(() => {
     if(location.includes('details')){
@@ -86,10 +103,11 @@ const CardCode: React.FC = () => {
       <label className=' numbers'>
         <span>Multa:</span>
         <input
-          type="text"
+          type="number"
           name="multa"
           id="fine"
-          value={!isDisabled ? `R$ ${codeInformation.multa}` : codeInformation.multa}
+          step='0.01'
+          value={codeInformation.multa}
           disabled={!isDisabled}
           onChange={handleChange}
         />
@@ -160,9 +178,10 @@ const CardCode: React.FC = () => {
       <label className=' numbers'>
         <span>Multa:</span>
         <input
-          type="text"
+          type="number"
           name="multa"
           id="fine"
+          step='0.01'
           placeholder='Multa'
           value={codeInformation.multa}
           onChange={handleChange}
@@ -171,7 +190,7 @@ const CardCode: React.FC = () => {
       <label className='numbers'>
         <span>Tempo de Prisão:</span>
         <input
-          type="text"
+          type="number"
           name="tempoPrisao"
           id="time"
           placeholder='Tempo de Prisão'

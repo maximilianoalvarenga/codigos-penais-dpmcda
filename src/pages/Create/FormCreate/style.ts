@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
+export const ButtonCreate = styled.button`
+  &[data-disabled="true"] {
+    cursor: default;
+  }
+
+  cursor: pointer;
+`;
 export const Container = styled.div`
+
   width: 80%;
   height:95%;
   position: relative;
@@ -54,17 +62,12 @@ export const Container = styled.div`
 
       button {
         border-style: none;
-        cursor: pointer;
         font-size: 2rem;
         font-weight: bold;
         width: 150px;
         height: 80%;
         border-radius: 15px;
       }
-    }
-
-    .sucess {
-      background-color: green;
     }
   }
 
