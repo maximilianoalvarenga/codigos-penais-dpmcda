@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# Boas vindas ao repositório do Desafio Front-End Cidade Alta Roleplay!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O objetivo desse desafio é demonstrar as habilidades em React e Redux. Para isso, foi apresentado um "projeto" de Sistema de controle de Códigos Penais do Departamento de Policia do Cidade Alta Roleplay, onde o usuário irá autenticar-se e após o sucesso poderá consultar, incluir, editar e visualizar os códigos penais da Cidade Alta.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+# Sumário
+- [Aprendizados](#aprendizados)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Instruções para rodar a aplicação](#instruções-para-rodar-a-aplicação)
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Aprendizados
+O projeto foi baseado em Typescript, tecnologia sem muito dominio até o momento, alguns momentos a falta de conhecimento atrasou o desenvolvimento mas a leitura da documentação sanou as duvidas. Massificação de conhecimento em Styled-Components, Redux e Hooks.
+# Tecnologias utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Para a implementação da Apliacção, foram utilizados:
 
-### `yarn test`
+  - [React](https://pt-br.reactjs.org/) para a criação das interfaces;
+  - [React Router](https://pt-br.reactjs.org/) para o roteamento entre as interfaces;
+  - [Styled Components](https://styled-components.com/) para a estilização das interfaces;
+  - [Styled Icons](https://styled-icons.dev/) para a disponibilização dos ícones;
+  - [TypeScript](https://www.typescriptlang.org/) para a typagem estática.
+  - [A definir](#) para a disponibilização de mensagens.
+  - [GitHub Pages](https://github.com/gitname/react-gh-pages) para disponibilizar o frontend em produção no Github;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Instruções para rodar a aplicação:
+1. Certifique de conter o node instalado em sua maquina
+    ```sh
+    node --version
+    ```
+    * Caso não retorne algum resultado ou retorne um erro, instalar por meio official do [Node](https://nodejs.org/en/download/).
 
-### `yarn build`
+2. Clone o repositório
+    ```sh
+    git clone https://github.com/maximilianoalvarenga/codigos-penais-dpmcda
+    ```
+  * Entre na pasta do repositório que você acabou de clonar:
+    ```sh
+    cd codigos-penais-dpmcda
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Instale as dependências
+    ```sh
+    npm install
+    ```
+4. Rodando a aplicação localmente
+    ```sh
+    npm start
+    ```
+5. Acessando aplicação disponibilizada no Github pages
+    * [DPM - Cidade Alta](https://maximilianoalvarenga.github.io/codigos-penais-dpmcda/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
