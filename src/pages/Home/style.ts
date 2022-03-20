@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 100vw;
   height: auto;
   min-height: 100vh;
-  background-color: black;
+  background-color: #202020;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -19,7 +19,7 @@ export const NewAdd = styled(Add)`
 
   width: 100%;
   height: 100%;
-  color: #FFCC01;
+  color: #202020;
 `;
 
 export const Main = styled.main`
@@ -50,7 +50,7 @@ export const Main = styled.main`
   #search-code {
     width: 81%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: relative;
 
     input {
@@ -67,7 +67,6 @@ export const AddCode = styled.div`
   &[data-teste="true"] {
     width: 100px;
     height: 36px;
-    right: 2%;
 
     span {
       font-size: 2rem;
@@ -76,14 +75,14 @@ export const AddCode = styled.div`
     }
   }
 
-  color: #FFCC01;
-  transition: all 0.5s;
-  background-color: #4B45DE;
+  color: #202020;
+  transition: all 0.7s;
+
+  background-color: #FFD100;
   width: 36px;
   height: 35px;
   position: absolute;
-  bottom: 5%;
-  right: 7%;
+  left: 0.2%;
   border-radius: 10px;
   display: flex;
   justify-content: center;

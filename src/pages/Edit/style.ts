@@ -9,7 +9,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   position: absolute;
-
 `;
 
 export const Main = styled.div`

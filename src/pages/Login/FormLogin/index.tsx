@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { setPenalCodes, setStatus } from 'slices/penalCodes';
 import { useNavigate } from 'react-router-dom';
 import { Container } from './style';
 import * as Auth from 'services/Auth';
+import { useDispatch } from 'react-redux';
 
 const FormLogin: React.FC = () => {
+  const dispatch = useDispatch();
   interface valuesForm {
     user: string,
     password: string,
@@ -63,9 +66,15 @@ const FormLogin: React.FC = () => {
     const dataUser = await Auth.verifyUser(valueInput);
 
     if(dataUser) {
+      const allCodes = await Auth.getPenalCodes();
+      const allStatus = await Auth.getStatus();
+      dispatch(setPenalCodes(allCodes));
+      dispatch(setStatus(allStatus))
+
       navigate('/home');
     }
   }
+
   return (
     <Container>
       <span id='title-form'>Faça seu login</span>
