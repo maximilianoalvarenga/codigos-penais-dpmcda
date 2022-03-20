@@ -25,6 +25,7 @@ const Details: React.FC = () => {
 
     if(excluded.status !== 404) {
       /** Caso alterasse no Banco de dados
+       *
        * const allCodes = await UTILS.getPenalCodes();
        * dispatch(setPenalCodes(allCodes));
        */
@@ -35,6 +36,20 @@ const Details: React.FC = () => {
     // Fim bloco remoção
 
       navigate('/home');
+    } else {
+      /**
+       * Remover bloco Else em Prod, pois localmente não é atualizado o banco de
+       * dados, logo a api retornará 404
+       */
+
+      for (const iterator of codigopenal) {
+        if(iterator.id === parseInt(id!)) {
+          const newArray = codigopenal.filter((code: any) => code.id.toString() !== id);
+          dispatch(setPenalCodes(newArray));
+
+          navigate('/home');
+        }
+      }
     }
   }
 

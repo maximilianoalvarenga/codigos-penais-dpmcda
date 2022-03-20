@@ -1,16 +1,79 @@
 import CardCode from 'components/CardCode';
 import Header from 'components/Header';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import * as utils from 'services/Auth';
+import { setPenalCodes } from 'slices/penalCodes';
 import { Container, Main } from './style';
 
 const Edit: React.FC = () => {
+  const { codigopenal, novoCodigoPenal } = useSelector((state: any)=> state.codigopenal);
+  const [isDisabled, setIsDisabled ] = useState(true);
+  const [ updateCode, setUpdateCode ] = useState<any>({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id }= useParams();
 
   const returnHome = () => {
     navigate('/home');
   }
+
+  const verifyChanges = useCallback(() => {
+    let code: any = {};
+    let dataCriacao: any = '';
+
+    for (const iterator of codigopenal) {
+      if(iterator.id.toString() === id){
+        code = {...iterator}
+        dataCriacao = iterator.dataCriacao;
+      }
+    }
+
+    const isChanged = utils.compareFields(code, novoCodigoPenal);
+
+    if(isChanged !== false){
+      setUpdateCode({...novoCodigoPenal, dataCriacao});
+      setIsDisabled(false);
+    } else {
+      setUpdateCode({});
+      setIsDisabled(true);
+    }
+
+  },[codigopenal, id, novoCodigoPenal]);
+
+  const alterCode = useCallback(async() => {
+    let putCode = await utils.updateCode(updateCode);
+
+    // Remover em Prod, pois será atualizado o store quando aplicado o update
+      const aux = {...putCode, id: parseInt(id!)};
+      console.log(putCode)
+      let temp: any = []
+      for (let iterator of codigopenal) {
+        if(iterator.id === parseInt(aux.id)) {
+          temp = [ ...temp, aux];
+        } else {
+          temp = [...temp, iterator];
+        }
+      }
+
+      dispatch(setPenalCodes(temp));
+    // Fim do Bloco
+
+    /** Adicionar em Prod, pois realizará a atualização do store com base
+     *  no retorno da atualização do banco.
+     *
+     * const updateStore = await utils.getPenalCodes();
+     * dispatch(setPenalCodes(updateStore));
+     */
+
+    navigate(`/details/${id}`);
+  },[codigopenal, dispatch, id, navigate, updateCode])
+
+  useEffect(() => {
+    verifyChanges()
+  },[verifyChanges]);
+
   return (
     <Container>
       <Header />
@@ -25,6 +88,8 @@ const Edit: React.FC = () => {
             <button
               type='button'
               className='attention'
+              disabled={isDisabled}
+              onClick={alterCode}
             >
               Salvar
             </button>

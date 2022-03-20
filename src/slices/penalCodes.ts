@@ -11,9 +11,6 @@ export const slice = createSlice({
     setPenalCodes(state, { payload }){
       return { ...state, codigopenal: payload }
     },
-    tempInsert(state, { payload }){
-      return { ...state, codigopenal: { ...state.codigopenal, ...payload} }
-    },
     setStatus(state, { payload }){
       return { ...state, status: payload }
     },
@@ -38,7 +35,6 @@ export const {
   setStatus,
   setNewPenalCode,
   clearNewPenalCode,
-  tempInsert,
 } = slice.actions;
 
 export const getPenalCodes = ((state: { codigopenal: []; }) => state.codigopenal);

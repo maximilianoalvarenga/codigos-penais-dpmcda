@@ -15,6 +15,7 @@ interface Code {
   status: number
 }
 
+//Funcção temporária, já que o id seria autoincrementado no backend
 export const lastId = (param: any) => {
   const ids = [];
 
@@ -39,6 +40,12 @@ export const getStatus = async() => {
 
 export const postCode = async(param: any, id: any) => {
   const response = await API.postPenalCode(param, id);
+  return response;
+}
+
+export const updateCode = async(code: Code) => {
+  const response = await API.putPenalCode(code);
+  console.log(response);
   return response;
 }
 
@@ -71,4 +78,21 @@ export const verifyFields = (param: Code) => {
     isValid = true
   }
   return isValid;
+}
+
+export const compareFields = (code: Code, newCode: Code) =>{
+  let isChange = false;
+  if(code.id === newCode.id){
+    if(
+      code.nome !== newCode.nome ||
+      code.descricao !== newCode.descricao ||
+      code.multa !== newCode.multa ||
+      code.tempoPrisao !== newCode.tempoPrisao ||
+      code.status !== newCode.status
+      ){
+      isChange = true;
+    }
+  }
+
+  return isChange;
 }
