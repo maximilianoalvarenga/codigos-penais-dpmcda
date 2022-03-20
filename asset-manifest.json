@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/codigos-penais-dpmcda/static/js/main.7b1e0783.js",
+    "main.js": "/codigos-penais-dpmcda/static/js/main.92ba4f22.js",
     "static/media/dpmcda.png": "/codigos-penais-dpmcda/static/media/dpmcda.495c15763f569adae721.png",
     "static/media/cda.png": "/codigos-penais-dpmcda/static/media/cda.fe50ebc775d5415b2071.png",
     "index.html": "/codigos-penais-dpmcda/index.html",
-    "main.7b1e0783.js.map": "/codigos-penais-dpmcda/static/js/main.7b1e0783.js.map"
+    "main.92ba4f22.js.map": "/codigos-penais-dpmcda/static/js/main.92ba4f22.js.map"
   },
   "entrypoints": [
-    "static/js/main.7b1e0783.js"
+    "static/js/main.92ba4f22.js"
   ]
 }
