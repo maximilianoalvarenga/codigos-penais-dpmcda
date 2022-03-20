@@ -16,10 +16,6 @@ const Edit: React.FC = () => {
   const dispatch = useDispatch();
   const { id }= useParams();
 
-  const returnHome = () => {
-    navigate('/home');
-  }
-
   const verifyChanges = useCallback(() => {
     let code: any = {};
     let dataCriacao: any = '';
@@ -67,7 +63,7 @@ const Edit: React.FC = () => {
      * dispatch(setPenalCodes(updateStore));
      */
 
-    navigate(`/details/${id}`);
+    navigate(-1);
   },[codigopenal, dispatch, id, navigate, updateCode])
 
   useEffect(() => {
