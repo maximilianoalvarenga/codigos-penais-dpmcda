@@ -5,7 +5,8 @@ export const slice = createSlice({
   initialState: {
     codigopenal: [],
     status: [],
-    novoCodigoPenal: {}
+    novoCodigoPenal: {},
+    resultSearch: [],
   },
   reducers: {
     setPenalCodes(state, { payload }){
@@ -16,6 +17,9 @@ export const slice = createSlice({
     },
     setNewPenalCode(state, { payload}){
       return { ...state, novoCodigoPenal: {...state.novoCodigoPenal, ...payload} }
+    },
+    setResultSearch(state, { payload}){
+      return { ...state, resultSearch: payload }
     },
     clearNewPenalCode(state){
       return { ...state, novoCodigoPenal: {
@@ -35,9 +39,11 @@ export const {
   setStatus,
   setNewPenalCode,
   clearNewPenalCode,
+  setResultSearch,
 } = slice.actions;
 
 export const getPenalCodes = ((state: { codigopenal: []; }) => state.codigopenal);
 export const getStatus = ((state: { status: []; }) => state.status);
-export const getNewPenalCode = ((state: { novoCodigoPenal: {}; }) => state.novoCodigoPenal)
+export const getNewPenalCode = ((state: { novoCodigoPenal: {}; }) => state.novoCodigoPenal);
+export const getResultSearch = ((state: { resultSearch: []; }) => state.resultSearch);
 export default slice.reducer;

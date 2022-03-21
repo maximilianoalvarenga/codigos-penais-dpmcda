@@ -55,7 +55,7 @@ export const Main = styled.main`
 
     input {
       height: 80%;
-      width: 50%;
+      width: 20%;
       border-radius: 10px;
       padding-left: 15px;
     }
