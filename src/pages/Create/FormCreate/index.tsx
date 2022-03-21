@@ -3,7 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ButtonCreate, Container } from './style';
-import * as utils from 'services/Auth';
+import * as UTILS from 'services/Utils';
+import * as API from 'Api/ApiUtils';
 import { setPenalCodes } from 'slices/penalCodes';
 import Return from 'components/Return';
 
@@ -13,12 +14,8 @@ const FormCreate: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const returnHome = () => {
-    navigate('/home');
-  }
-
   const verificationFields = useCallback(() => {
-    const isValid = utils.verifyFields(novoCodigoPenal);
+    const isValid = UTILS.verifyFields(novoCodigoPenal);
 
     if(isValid){
       setDisabled(false);
@@ -28,8 +25,8 @@ const FormCreate: React.FC = () => {
   }, [novoCodigoPenal]);
 
   const createCode = useCallback(async() => {
-    const getLastId: number = utils.lastId(codigopenal);
-    const setCode = await utils.postCode(novoCodigoPenal, getLastId);
+    const getLastId: number = UTILS.lastId(codigopenal);
+    const setCode = await API.postCode(novoCodigoPenal, getLastId);
 
   // Remover em Prod
     let temp = codigopenal;

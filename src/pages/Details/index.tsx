@@ -3,7 +3,7 @@ import Header from 'components/Header';
 import React, { useCallback, useState } from 'react';
 import { Confirmation, Container, Main } from './style';
 import { useNavigate, useParams } from 'react-router-dom';
-import * as API from 'services/Api';
+import * as API from 'Api/Api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPenalCodes } from 'slices/penalCodes';
 import Return from 'components/Return';
@@ -20,7 +20,7 @@ const Details: React.FC = () => {
   }
 
   const confirmExclude = useCallback(async() => {
-    const excluded: any = await API.deletePenalCode(id);
+    const excluded: any = await API.deletePenalCode(id as string);
 
       if(excluded.status !== 404) {
         /** Caso alterasse no Banco de dados

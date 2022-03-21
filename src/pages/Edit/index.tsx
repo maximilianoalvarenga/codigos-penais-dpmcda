@@ -4,7 +4,8 @@ import Return from 'components/Return';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import * as utils from 'services/Auth';
+import * as UTILS from 'services/Utils';
+import * as API from 'Api/ApiUtils';
 import { setPenalCodes } from 'slices/penalCodes';
 import { Container, Main } from './style';
 
@@ -27,7 +28,7 @@ const Edit: React.FC = () => {
       }
     }
 
-    const isChanged = utils.compareFields(code, novoCodigoPenal);
+    const isChanged = UTILS.compareFields(code, novoCodigoPenal);
 
     if(isChanged !== false){
       setUpdateCode({...novoCodigoPenal, dataCriacao});
@@ -40,7 +41,7 @@ const Edit: React.FC = () => {
   },[codigopenal, id, novoCodigoPenal]);
 
   const alterCode = useCallback(async() => {
-    let putCode = await utils.updateCode(updateCode);
+    let putCode = await API.updateCode(updateCode);
 
     // Remover em Prod, pois será atualizado o store quando aplicado o update
       const aux = {...putCode, id: parseInt(id!)};
