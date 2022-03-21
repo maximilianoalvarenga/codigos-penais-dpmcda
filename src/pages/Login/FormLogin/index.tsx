@@ -6,10 +6,10 @@ import * as UTILS from 'services/Utils';
 import * as API from 'Api/ApiUtils';
 import { useDispatch } from 'react-redux';
 import { Credentials } from 'react-app-env';
+import { ErrorUser, UserSucess } from 'services/Notify';
 
 const FormLogin: React.FC = () => {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const [valueInput, setValueInput] = useState<Credentials>({
@@ -68,9 +68,14 @@ const FormLogin: React.FC = () => {
       const allCodes = await API.getPenalCodes();
       const allStatus = await API.getStatus();
       dispatch(setPenalCodes(allCodes));
-      dispatch(setStatus(allStatus))
+      dispatch(setStatus(allStatus));
+      UserSucess();
 
-      navigate('/home');
+      setTimeout(() => {
+        navigate('/home');
+      }, 3000);
+    } else {
+      ErrorUser();
     }
   }
 

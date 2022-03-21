@@ -8,6 +8,7 @@ import * as UTILS from 'services/Utils';
 import * as API from 'Api/ApiUtils';
 import { setPenalCodes } from 'slices/penalCodes';
 import { Container, Main } from './style';
+import { ChangeSucess } from 'services/Notify';
 
 const Edit: React.FC = () => {
   const { codigopenal, novoCodigoPenal } = useSelector((state: any)=> state.codigopenal);
@@ -64,7 +65,8 @@ const Edit: React.FC = () => {
      * dispatch(setPenalCodes(updateStore));
      */
 
-    navigate(-1);
+     ChangeSucess()
+     navigate(-1);
   },[codigopenal, dispatch, id, navigate, updateCode])
 
   useEffect(() => {

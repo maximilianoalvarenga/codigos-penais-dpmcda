@@ -7,6 +7,7 @@ import * as UTILS from 'services/Utils';
 import * as API from 'Api/ApiUtils';
 import { setPenalCodes } from 'slices/penalCodes';
 import Return from 'components/Return';
+import { CodeAddSucess } from 'services/Notify';
 
 const FormCreate: React.FC = () => {
   const {novoCodigoPenal, codigopenal} = useSelector((state: any)=> state.codigopenal);
@@ -34,8 +35,11 @@ const FormCreate: React.FC = () => {
     dispatch(setPenalCodes(temp));
 
   // Fim bloco
-
+  CodeAddSucess();
+  setTimeout(() => {
     navigate('/home');
+  }, 3100);
+
   },[codigopenal, dispatch, navigate, novoCodigoPenal]);
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import * as API from 'Api/Api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPenalCodes } from 'slices/penalCodes';
 import Return from 'components/Return';
+import { ExclusionSucess } from 'services/Notify';
 
 const Details: React.FC = () => {
   const { codigopenal } = useSelector((state: any)=> state.codigopenal);
@@ -34,7 +35,8 @@ const Details: React.FC = () => {
         dispatch(setPenalCodes(newArray))
       // Fim bloco remoção
 
-        navigate('/home');
+      ExclusionSucess();
+      navigate('/home');
       } else {
         /**
          * Remover bloco Else em Prod, pois localmente não é atualizado o banco de
@@ -46,6 +48,7 @@ const Details: React.FC = () => {
             const newArray = codigopenal.filter((code: any) => code.id.toString() !== id);
             dispatch(setPenalCodes(newArray));
 
+            ExclusionSucess();
             navigate('/home');
           }
         }
