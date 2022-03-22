@@ -2,19 +2,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Container } from './style';
 import { useNavigate } from 'react-router-dom';
+import * as UTIL from 'services/Utils';
 
 const TableCodes: React.FC = () => {
   const { codigopenal, resultSearch } = useSelector((state: any)=> state.codigopenal);
 
   const navigate = useNavigate();
-  const convertToData = (param: string) => {
-    const convertion = new Date(param)
-      .toISOString()
-      .replace('-', '/')
-      .split('T')[0]
-      .replace('-', '/');
-
-      const newData = new Date(convertion).toLocaleDateString('pt-br')
+  const convertToData = (param: string): string => {
+    const newData = UTIL.convertData(param);
     return newData;
   }
 

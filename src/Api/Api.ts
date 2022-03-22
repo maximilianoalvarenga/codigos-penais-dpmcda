@@ -36,13 +36,11 @@ export const getAllStatus = async() => {
 
 export const postPenalCode = async(code: Code, id: number) => {
   let {nome, descricao, multa, tempoPrisao, status } = code;
-  const dataCriacao = new Date().toISOString();
   multa = parseFloat(multa);
   tempoPrisao = parseInt(tempoPrisao);
 
   const body = JSON.stringify({
     id: id + 1,
-    dataCriacao,
     nome,
     descricao,
     multa,

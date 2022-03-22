@@ -12,7 +12,15 @@ export const getStatus = async() => {
 }
 
 export const postCode = async(code: Code, id: number) => {
-  const response = await API.postPenalCode(code, id);
+  let response = await API.postPenalCode(code, id);
+  /**
+   *  Remover em PROD, pois a criação do campo dataCriacao será realizado
+   *  no backend, para não ter interferencia do Timezone do usuário
+   */
+    const dataCriacao = new Date().toISOString();
+    response = {...response, dataCriacao}
+    //Fim Bloco de remoção
+
   return response;
 }
 

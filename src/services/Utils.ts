@@ -1,7 +1,9 @@
 import * as API from 'Api/Api';
 import { Code, Credentials } from 'react-app-env';
 
-//Funcção temporária, já que o id seria autoincrementado no backend
+/**
+ * Função temporária, já que o id seria autoincrementado no backend
+ */
 export const lastId = (param: any) => {
   const ids = [];
 
@@ -60,4 +62,25 @@ export const compareFields = (code: Code, newCode: Code) =>{
   }
 
   return isChange;
+}
+
+export const convertData = (fullDate: string): string => {
+  const date = new Date(fullDate)
+    .toISOString()
+    .replace('-', '/')
+    .split('T')[0]
+    .replace('-', '/')
+  ;
+
+  const arrayTime = new Date(fullDate)
+    .toISOString()
+    .replace('-', '/')
+    .split('T')[1]
+    .split('.')[0]
+    .split(':')
+  ;
+
+    const newDate: string = `${new Date(date)
+      .toLocaleDateString('pt-br')} ${arrayTime[0]}:${arrayTime[1]}`;
+    return newDate;
 }
