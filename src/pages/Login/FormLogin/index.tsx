@@ -108,6 +108,7 @@ const FormLogin: React.FC = () => {
 
       <button
         id='btn-login'
+        className='sucess'
         type="button"
         disabled={ disableBtn }
         onClick={ handleSubmit }

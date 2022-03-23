@@ -4,8 +4,8 @@ import logoDpm from 'assets/dpmcda.png';
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: rgb(10,8,0);
-  background: radial-gradient(circle, rgba(10,8,0,1) 0%, rgba(251,208,63,1) 100%);
+  background: rgb(193,160,50);
+  background: radial-gradient(circle, rgba(193,160,50,1) 0%, rgba(0,0,0,1) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,10 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: white;
+  //
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+  //
   border-radius: 5%;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {

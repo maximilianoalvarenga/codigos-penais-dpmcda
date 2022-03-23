@@ -11,7 +11,7 @@ export const Container = styled.form`
 
   #title-form {
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     text-align: center;
   }
@@ -30,14 +30,15 @@ export const Container = styled.form`
 
       .label-input {
         font-size: 1.5rem;
-        font-weight: 400;
+        font-weight: bold;
         height: 35%;
       }
     }
 
     input[type='text'],
     input[type='password'] {
-      border-style: none none dotted none;
+      background-color: rgba(255, 255, 255, 0);
+      border-style: none none solid none;
       height: 60%;
       font-size: 1.8rem;
     }
@@ -49,5 +50,6 @@ export const Container = styled.form`
     font-size: 1.6rem;
     font-weight: bold;
     border-radius: 15px;
+    border-style: none;
   }
 `;
