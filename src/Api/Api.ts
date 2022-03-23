@@ -1,3 +1,5 @@
+import { Code } from "react-app-env";
+
 const USER = 'https://my-json-server.typicode.com/cidadealta/exercise/usuarios';
 const PENAL_CODE = 'https://my-json-server.typicode.com/cidadealta/exercise/codigopenal';
 const STATUS_CODE = 'https://my-json-server.typicode.com/cidadealta/exercise/status';
@@ -32,15 +34,13 @@ export const getAllStatus = async() => {
   }
 }
 
-export const postPenalCode = async(param, id) => {
-  let {nome, descricao, multa, tempoPrisao, status } = param;
-  const dataCriacao = new Date().toISOString();
+export const postPenalCode = async(code: Code, id: number) => {
+  let {nome, descricao, multa, tempoPrisao, status } = code;
   multa = parseFloat(multa);
   tempoPrisao = parseInt(tempoPrisao);
 
   const body = JSON.stringify({
     id: id + 1,
-    dataCriacao,
     nome,
     descricao,
     multa,
@@ -63,7 +63,7 @@ export const postPenalCode = async(param, id) => {
   }
 }
 
-export const putPenalCode = async(code) => {
+export const putPenalCode = async(code: Code) => {
   let { id, dataCriacao, nome, descricao, multa, tempoPrisao, status } = code;
   multa = parseFloat(multa);
   tempoPrisao = parseInt(tempoPrisao);
@@ -103,9 +103,9 @@ export const putPenalCode = async(code) => {
   }
 }
 
-export const deletePenalCode = async(param) => {
+export const deletePenalCode = async(id: string) => {
   try {
-    const data = await fetch(`${PENAL_CODE}/${param}`, {
+    const data = await fetch(`${PENAL_CODE}/${id}`, {
       method: 'DELETE',
     });
     return data;

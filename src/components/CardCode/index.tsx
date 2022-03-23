@@ -29,7 +29,6 @@ const CardCode: React.FC = () => {
     status: 1,
   });
   const [isDisabled, setIsDisabled] = useState(true);
-
   const changeDisabled = useCallback((): void => {
     setIsDisabled(false);
   },[])
@@ -126,17 +125,11 @@ const CardCode: React.FC = () => {
       <label className='select-input'>
         <span>Status:</span>
           {
-            !isDisabled ? (
-              <select disabled={!isDisabled} defaultValue={codeInformation.status}>
-                <option
-                  value={codeInformation.status}>{codeInformation.status === 1 ? 'Ativo' : 'Inativo'}
-                </option>
-              </select>
-            ) : (
+            location.includes('edit') ? (
               <select
                 name='status'
                 disabled={!isDisabled}
-                defaultValue={codeInformation.status}
+                value={codeInformation.status.toString()}
                 onChange={handleChange}
               >
                 <option
@@ -148,6 +141,12 @@ const CardCode: React.FC = () => {
                   value="2"
                 >
                   Inativo
+                </option>
+              </select>
+            ) : (
+              <select disabled={!isDisabled} defaultValue={codeInformation.status}>
+                <option
+                  value={codeInformation.status}>{codeInformation.status === 1 ? 'Ativo' : 'Inativo'}
                 </option>
               </select>
             )

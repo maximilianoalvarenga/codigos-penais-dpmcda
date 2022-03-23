@@ -1,11 +1,14 @@
 import CardCode from 'components/CardCode';
 import Header from 'components/Header';
+import Return from 'components/Return';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import * as utils from 'services/Auth';
+import * as UTILS from 'services/Utils';
+import * as API from 'Api/ApiUtils';
 import { setPenalCodes } from 'slices/penalCodes';
 import { Container, Main } from './style';
+import { ChangeSucess } from 'services/Notify';
 
 const Edit: React.FC = () => {
   const { codigopenal, novoCodigoPenal } = useSelector((state: any)=> state.codigopenal);
@@ -14,10 +17,6 @@ const Edit: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id }= useParams();
-
-  const returnHome = () => {
-    navigate('/home');
-  }
 
   const verifyChanges = useCallback(() => {
     let code: any = {};
@@ -30,7 +29,7 @@ const Edit: React.FC = () => {
       }
     }
 
-    const isChanged = utils.compareFields(code, novoCodigoPenal);
+    const isChanged = UTILS.compareFields(code, novoCodigoPenal);
 
     if(isChanged !== false){
       setUpdateCode({...novoCodigoPenal, dataCriacao});
@@ -43,11 +42,10 @@ const Edit: React.FC = () => {
   },[codigopenal, id, novoCodigoPenal]);
 
   const alterCode = useCallback(async() => {
-    let putCode = await utils.updateCode(updateCode);
+    let putCode = await API.updateCode(updateCode);
 
     // Remover em Prod, pois será atualizado o store quando aplicado o update
       const aux = {...putCode, id: parseInt(id!)};
-      console.log(putCode)
       let temp: any = []
       for (let iterator of codigopenal) {
         if(iterator.id === parseInt(aux.id)) {
@@ -67,7 +65,8 @@ const Edit: React.FC = () => {
      * dispatch(setPenalCodes(updateStore));
      */
 
-    navigate(`/details/${id}`);
+     ChangeSucess()
+     navigate(-1);
   },[codigopenal, dispatch, id, navigate, updateCode])
 
   useEffect(() => {
@@ -79,7 +78,7 @@ const Edit: React.FC = () => {
       <Header />
       <Main>
         <div className='new-content'>
-          <div className='teste' onClick={returnHome}>Voltar</div>
+          <Return />
           <span className='title'>Detalhes Código Penal</span>
           <div className='content'>
             <CardCode />

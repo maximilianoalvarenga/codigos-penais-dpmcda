@@ -2,23 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { setPenalCodes, setStatus } from 'slices/penalCodes';
 import { useNavigate } from 'react-router-dom';
 import { Container } from './style';
-import * as Auth from 'services/Auth';
+import * as UTILS from 'services/Utils';
+import * as API from 'Api/ApiUtils';
 import { useDispatch } from 'react-redux';
+import { Credentials } from 'react-app-env';
+import { ErrorUser, UserSucess } from 'services/Notify';
 
 const FormLogin: React.FC = () => {
   const dispatch = useDispatch();
-  interface valuesForm {
-    user: string,
-    password: string,
-  }
-
   const navigate = useNavigate();
 
-  const [valueInput, setValueInput] = useState<valuesForm>({
+  const [valueInput, setValueInput] = useState<Credentials>({
     user: '',
     password:'',
-  })
-  const [ textLabel, setTextLabel ] = useState<valuesForm>({
+  });
+
+  const [ textLabel, setTextLabel ] = useState<Credentials>({
     user: 'Usuario',
     password: 'Senha',
   });
@@ -63,15 +62,20 @@ const FormLogin: React.FC = () => {
   },[valueInput]);
 
   const handleSubmit = async() => {
-    const dataUser = await Auth.verifyUser(valueInput);
+    const dataUser = await UTILS.verifyUser(valueInput);
 
     if(dataUser) {
-      const allCodes = await Auth.getPenalCodes();
-      const allStatus = await Auth.getStatus();
+      const allCodes = await API.getPenalCodes();
+      const allStatus = await API.getStatus();
       dispatch(setPenalCodes(allCodes));
-      dispatch(setStatus(allStatus))
+      dispatch(setStatus(allStatus));
+      UserSucess();
 
-      navigate('/home');
+      setTimeout(() => {
+        navigate('/home');
+      }, 3000);
+    } else {
+      ErrorUser();
     }
   }
 
@@ -104,6 +108,7 @@ const FormLogin: React.FC = () => {
 
       <button
         id='btn-login'
+        className='sucess'
         type="button"
         disabled={ disableBtn }
         onClick={ handleSubmit }

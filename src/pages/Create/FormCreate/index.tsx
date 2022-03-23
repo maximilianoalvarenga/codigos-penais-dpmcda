@@ -3,8 +3,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ButtonCreate, Container } from './style';
-import * as utils from 'services/Auth';
+import * as UTILS from 'services/Utils';
+import * as API from 'Api/ApiUtils';
 import { setPenalCodes } from 'slices/penalCodes';
+import Return from 'components/Return';
+import { CodeAddSucess } from 'services/Notify';
 
 const FormCreate: React.FC = () => {
   const {novoCodigoPenal, codigopenal} = useSelector((state: any)=> state.codigopenal);
@@ -12,12 +15,8 @@ const FormCreate: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const returnHome = () => {
-    navigate('/home');
-  }
-
   const verificationFields = useCallback(() => {
-    const isValid = utils.verifyFields(novoCodigoPenal);
+    const isValid = UTILS.verifyFields(novoCodigoPenal);
 
     if(isValid){
       setDisabled(false);
@@ -27,8 +26,8 @@ const FormCreate: React.FC = () => {
   }, [novoCodigoPenal]);
 
   const createCode = useCallback(async() => {
-    const getLastId: number = utils.lastId(codigopenal);
-    const setCode = await utils.postCode(novoCodigoPenal, getLastId);
+    const getLastId: number = UTILS.lastId(codigopenal);
+    const setCode = await API.postCode(novoCodigoPenal, getLastId);
 
   // Remover em Prod
     let temp = codigopenal;
@@ -36,8 +35,11 @@ const FormCreate: React.FC = () => {
     dispatch(setPenalCodes(temp));
 
   // Fim bloco
-
+  CodeAddSucess();
+  setTimeout(() => {
     navigate('/home');
+  }, 3100);
+
   },[codigopenal, dispatch, navigate, novoCodigoPenal]);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const FormCreate: React.FC = () => {
   return (
     <Container>
       <div className='new-content'>
-        <div className='teste' onClick={returnHome}>Voltar</div>
+        <Return />
         <div className='title'>Novo Código Penal</div>
         <div className='content'>
           <CardCode />

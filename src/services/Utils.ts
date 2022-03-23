@@ -1,21 +1,9 @@
-import { useSelector } from 'react-redux';
-import * as API from './Api';
+import * as API from 'Api/Api';
+import { Code, Credentials } from 'react-app-env';
 
-interface Credentials {
-  user: string;
-  password: string;
-}
-
-interface Code {
-  id: number
-  nome: string
-  descricao: string
-  multa: number | string
-  tempoPrisao: number | string
-  status: number
-}
-
-//Funcção temporária, já que o id seria autoincrementado no backend
+/**
+ * Função temporária, já que o id seria autoincrementado no backend
+ */
 export const lastId = (param: any) => {
   const ids = [];
 
@@ -26,27 +14,6 @@ export const lastId = (param: any) => {
   ids.sort();
 
   return ids.pop();
-}
-
-export const getPenalCodes = async() => {
-  const response = await API.getAllPenalCodes();
-  return response;
-}
-
-export const getStatus = async() => {
-  const response = await API.getAllPenalCodes();
-  return response;
-}
-
-export const postCode = async(param: any, id: any) => {
-  const response = await API.postPenalCode(param, id);
-  return response;
-}
-
-export const updateCode = async(code: Code) => {
-  const response = await API.putPenalCode(code);
-  console.log(response);
-  return response;
 }
 
 export const verifyUser = async(credentials: Credentials) =>{
@@ -95,4 +62,25 @@ export const compareFields = (code: Code, newCode: Code) =>{
   }
 
   return isChange;
+}
+
+export const convertData = (fullDate: string): string => {
+  const date = new Date(fullDate)
+    .toISOString()
+    .replace('-', '/')
+    .split('T')[0]
+    .replace('-', '/')
+  ;
+
+  const arrayTime = new Date(fullDate)
+    .toISOString()
+    .replace('-', '/')
+    .split('T')[1]
+    .split('.')[0]
+    .split(':')
+  ;
+
+    const newDate: string = `${new Date(date)
+      .toLocaleDateString('pt-br')} ${arrayTime[0]}:${arrayTime[1]}`;
+    return newDate;
 }
